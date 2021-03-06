@@ -1,0 +1,14 @@
+service: aws-serverless-elasticache
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
