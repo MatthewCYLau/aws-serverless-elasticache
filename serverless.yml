@@ -24,10 +24,21 @@ provider:
 
 functions:
   app:
+    name: users-lambda
     handler: index.handler
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
+  getUser:
+    name: users-lambda-get-users
+    handler: index.handler
+    events:
+      - http: "GET /users/{proxy+}"
+  createUser:
+    name: users-lambda-create-users
+    handler: index.handler
+    events:
+      - http: "POST /users"
 
 resources:
   Resources:

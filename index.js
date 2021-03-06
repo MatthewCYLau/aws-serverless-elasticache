@@ -10,7 +10,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 app.use(bodyParser.json({ strict: false }));
 
 app.get("/ping", function(req, res) {
-  res.send("pong!");
+  res.send("pong pong!");
 });
 
 // Get User endpoint
