@@ -1,8 +1,6 @@
 # AWS Serverless API with ElastiCache
 
-A reference project to deploy a serverless RESTful API coupling with Amazon ElastiCache, inspired by [this](https://www.serverless.com/blog/serverless-express-rest-api) tutorial by the [Serverless] framework(https://www.serverless.com/)
-
-[![Generic badge](https://img.shields.io/badge/Status-In-Progress-green.svg)](https://shields.io/)
+A reference project to deploy a serverless RESTful API coupling with Amazon ElastiCache, inspired by [this](https://www.serverless.com/blog/serverless-express-rest-api) tutorial by the [Serverless](https://www.serverless.com/) framework
 
 ## Pre-requisite
 
