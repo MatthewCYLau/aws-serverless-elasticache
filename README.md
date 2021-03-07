@@ -1,6 +1,10 @@
 # AWS Serverless API with ElastiCache
 
-A reference project to deploy a serverless RESTful API with Amazon ElastiCache, inspired by [this](https://www.serverless.com/blog/serverless-express-rest-api) tutorial by the [Serverless](https://www.serverless.com/) framework
+A reference project to deploy a serverless API with Amazon ElastiCache, inspired by [this](https://www.serverless.com/blog/serverless-express-rest-api) tutorial by the [Serverless](https://www.serverless.com/) framework
+
+A serverless todo app
+
+![AWS Architecture](img/aws-elasticache.JPG)
 
 ## Pre-requisite
 
