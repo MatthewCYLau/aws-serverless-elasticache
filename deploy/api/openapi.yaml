@@ -12,7 +12,7 @@ paths:
           schema:
             type: "string"
       x-amazon-apigateway-integration:
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:830663695860:function:ProcessTodos/invocations"
+        uri: "${process_todos_lambda_invocation_arn}"
         httpMethod: "POST"
         responses:
           default:

@@ -6,9 +6,9 @@ resource "aws_api_gateway_rest_api" "app" {
 
 data "template_file" "api_definition" {
   template = file("api/openapi.yaml")
-  #   vars = {
-
-  #   }
+  vars = {
+    process_todos_lambda_invocation_arn = aws_lambda_function.process_todos.invoke_arn
+  }
 }
 
 resource "aws_api_gateway_deployment" "app" {

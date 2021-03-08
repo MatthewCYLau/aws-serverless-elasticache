@@ -9,7 +9,7 @@ app.use(bodyParser.json({ strict: false }));
 
 const redisConfig = {
   // To-do: update host URL
-  host: "redistest2.kskdyd.0001.use1.cache.amazonaws.com",
+  host: process.env.REDIS_HOST_URL,
   port: 6379
 };
 
