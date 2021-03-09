@@ -10,12 +10,18 @@ resource "aws_lambda_function" "process_todos" {
 
   environment {
     variables = {
-      REDIS_HOST_URL = "redistest2.kskdyd.0001.use1.cache.amazonaws.com"
+      REDIS_HOST_URL = aws_elasticache_replication_group.redis.primary_endpoint_address
     }
   }
 
-  # To-do: add VPC config
+  vpc_config {
+    subnet_ids         = ["subnet-0c700f22"]
+    security_group_ids = ["sg-03b6fb6842a1688ce"]
+  }
 
+  depends_on = [
+    aws_elasticache_replication_group.redis
+  ]
 }
 
 resource "aws_iam_role" "process_todos_lambda" {
