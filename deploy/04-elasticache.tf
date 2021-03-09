@@ -6,8 +6,8 @@ resource "aws_elasticache_replication_group" "redis" {
   node_type                     = "cache.t2.micro"
   number_cache_clusters         = 1
   parameter_group_name          = "default.redis6.x"
-  engine_version                = "6.x"
+  engine_version                = "6.0.5"
   port                          = 6379
-  subnet_group_name             = "elasticachetestgroup"
+  subnet_group_name             = aws_elasticache_subnet_group.redis.name
   security_group_ids            = ["sg-03b6fb6842a1688ce"]
 }

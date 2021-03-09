@@ -8,5 +8,6 @@ data "aws_subnet_ids" "default" {
 
 resource "aws_elasticache_subnet_group" "redis" {
   name       = "elasticache-redis-subnet-group"
-  subnet_ids = data.aws_subnet_ids.default.id
+  description = "Serverless API Redis subnet group"
+  subnet_ids = data.aws_subnet_ids.default.ids
 }
