@@ -89,7 +89,7 @@ app.get("/v2/todos/:todoId", async function(req, res) {
   }
 });
 
-app.post("/todos", function(req, res) {
+app.post("/v1/todos", function(req, res) {
   const params = {
     TableName: "todos",
     Item: {

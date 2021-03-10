@@ -69,6 +69,20 @@ terraform destroy # destroys AWS stack
 sh deploy/lambdas/processTodos/updateFunction.sh
 ```
 
+## Usages
+
+- Make a `POST` request to `<API_ENDPOINT>/v1/todos` to create a todo:
+
+```json
+{
+  "todo": "foo"
+}
+```
+
+- Make a `GET` request to `<API_ENDPOINT>/v1/todos<TODO_ID>` to get a todo _without_ caching
+
+- Make a `GET` request to `<API_ENDPOINT>/v2/todos<TODO_ID>` to get a todo _with_ caching. Spot the difference in milliseconds :sweat_smile:
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
