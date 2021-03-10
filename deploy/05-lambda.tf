@@ -15,7 +15,7 @@ resource "aws_lambda_function" "process_todos" {
   }
 
   vpc_config {
-    subnet_ids         = data.aws_subnet_ids.default.ids
+    subnet_ids         = data.aws_subnet_ids.app.ids
     security_group_ids = [aws_security_group.redis.id]
   }
 
