@@ -24,11 +24,18 @@ resource "aws_subnet" "pub_subnet" {
   cidr_block        = "10.0.0.0/24"
   availability_zone = "us-east-1a"
 
+  tags = {
+    Name = "Public"
+  }
 }
 resource "aws_subnet" "pub_subnet2" {
   vpc_id            = aws_vpc.app.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1b"
+
+  tags = {
+    Name = "Public"
+  }
 }
 
 resource "aws_route_table" "public" {

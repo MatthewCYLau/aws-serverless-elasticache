@@ -19,9 +19,6 @@ resource "aws_lambda_function" "process_todos" {
     security_group_ids = [aws_security_group.redis.id]
   }
 
-  depends_on = [
-    aws_elasticache_replication_group.redis
-  ]
 }
 
 resource "aws_iam_role" "process_todos_lambda" {
@@ -48,35 +45,33 @@ resource "aws_iam_role_policy_attachment" "process_todos_attach" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
 
-resource "aws_iam_role_policy" "lambda_policy" {
+resource "aws_iam_role_policy" "lambda" {
   name = "prcoess-queue-lambda-policy"
   role = aws_iam_role.process_todos_lambda.id
 
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "SpecificTable",
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:BatchGet*",
-                "dynamodb:DescribeStream",
-                "dynamodb:DescribeTable",
-                "dynamodb:Get*",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:BatchWrite*",
-                "dynamodb:CreateTable",
-                "dynamodb:Delete*",
-                "dynamodb:Update*",
-                "dynamodb:PutItem"
-            ],
-            "Resource": [
-              "${aws_dynamodb_table.todos.arn}*"
-            ]
-        }
-    ]
+  policy = data.aws_iam_policy_document.lambda.json
+
 }
-EOF
+
+data "aws_iam_policy_document" "lambda" {
+  statement {
+    sid    = "SpecificTable"
+    effect = "Allow"
+    actions = [
+      "dynamodb:BatchGet*",
+      "dynamodb:DescribeStream",
+      "dynamodb:DescribeTable",
+      "dynamodb:Get*",
+      "dynamodb:Query",
+      "dynamodb:Scan",
+      "dynamodb:BatchWrite*",
+      "dynamodb:CreateTable",
+      "dynamodb:Delete*",
+      "dynamodb:Update*",
+      "dynamodb:PutItem"
+    ]
+    resources = [
+      "${aws_dynamodb_table.todos.arn}*"
+    ]
+  }
 }
