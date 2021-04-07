@@ -23,4 +23,43 @@ paths:
           - "method.request.path.proxy"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws_proxy"
+  /v1/todos/{todoId}:
+    get:
+      parameters:
+      - name: "todoId"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      x-amazon-apigateway-integration:
+        uri: "${process_todos_lambda_invocation_arn}"
+        httpMethod: "POST"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws_proxy"
+  /v1/todos:
+    get:
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "${process_todos_lambda_invocation_arn}"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws_proxy"
+  /v1/todos:
+    post:
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "${process_todos_lambda_invocation_arn}"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws_proxy"
 components: {}

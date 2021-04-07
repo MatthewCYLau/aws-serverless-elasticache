@@ -79,9 +79,9 @@ sh deploy/lambdas/processTodos/updateFunction.sh
 }
 ```
 
-- Make a `GET` request to `<API_ENDPOINT>/v1/todos<TODO_ID>` to get a todo _without_ caching
+- Make a `GET` request to `<API_ENDPOINT>/v1/todos/<TODO_ID>` to get a todo _without_ caching
 
-- Make a `GET` request to `<API_ENDPOINT>/v2/todos<TODO_ID>` to get a todo _with_ caching. Spot the difference in milliseconds :sweat_smile:
+- Make a `GET` request to `<API_ENDPOINT>/v2/todos/<TODO_ID>` to get a todo _with_ caching. Spot the difference in milliseconds :sweat_smile:
 
 ## Contributing
 
